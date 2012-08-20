@@ -9,12 +9,11 @@ object ApplicationBuild extends Build {
 
   lazy val root = Project("root", base = file("."))
     .dependsOn(plugin)
-    .aggregate(scalaSample, javaSample)
 
   lazy val plugin = Project(appName, base = file("plugin")).settings(
       resolvers += "Spy Repository" at "http://files.couchbase.com/maven2",
       libraryDependencies += "spy" % "spymemcached" % "2.6",
-      libraryDependencies += "play" %% "play" % "2.0",
+      libraryDependencies += "play" %% "play" % "2.1-SNAPSHOT",
       organization := "com.github.mumoshu",
       version := appVersion,
       publishTo <<= version { v: String =>
@@ -48,12 +47,6 @@ object ApplicationBuild extends Build {
         )
     )
 
-    lazy val scalaSample = PlayProject("scala-sample", path = file("samples/scala"), mainLang = SCALA).settings(
-      parallelExecution in Test := false
-    ).dependsOn(plugin)
-
-    lazy val javaSample = PlayProject("java-sample", path = file("samples/java"), mainLang = JAVA).settings(
-      parallelExecution in Test := false
-    ).dependsOn(plugin)
+   
 
 }
