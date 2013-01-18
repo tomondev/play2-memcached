@@ -1,18 +1,18 @@
 import sbt._
 import Keys._
-import PlayProject._
+import play.Project._
 
 object ApplicationBuild extends Build {
 
     val appName         = "play2-memcached"
-    val appVersion      = "0.2.1-SNAPSHOT"
+    val appVersion      = "0.2.1-LC2"
 
   val appDependencies = Seq(
-    "spy" % "spymemcached" % "2.6",
-    "play" %% "play" % "2.1-SNAPSHOT"
+    "spy" % "spymemcached" % "2.6"
+ 
   )
 
-  val main = PlayProject(appName, appVersion, appDependencies, mainLang = JAVA).settings(
+  val main = play.Project(appName, appVersion, appDependencies).settings(
     organization := "com.github.mumoshu"
   )
 
