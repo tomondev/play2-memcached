@@ -13,6 +13,7 @@ object ApplicationBuild extends Build {
   )
 
   val main = play.Project(appName, appVersion, appDependencies).settings(
+    resolvers += "Spy Repository" at "http://files.couchbase.com/maven2/",
     organization := "com.github.mumoshu"
   )
 
